@@ -1,0 +1,231 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* algemene body stijl */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #c8c8c8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Center login page exactly when body has class 'login-page' */
+body.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Override Bootstrap .container when on login page so it doesn't push content left */
+body.login-page > .container {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Login container - AANGEPAST NAAR 460PX zoals in het voorbeeld */
+.login-container {
+    background: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 460px; /* VERANDERD van 640px naar 460px */
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure consistent fixed layout on larger screens while remaining responsive */
+@media (min-width: 800px) {
+    .login-container {
+        width: 460px; /* use exact original width on wide viewports */
+    }
+}
+
+.header {
+    background: linear-gradient(135deg, #2e5baa 0%, #3d6ec9 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.lock-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.header p {
+    font-size: 15px;
+    font-weight: 400;
+    opacity: 0.95;
+}
+
+.form-container {
+    padding: 35px 40px 40px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    color: #2e5baa;
+}
+
+/* Larger key icon variant used for the registration code input */
+.input-wrapper.with-key .input-icon.key-icon {
+    /* match regular input icon sizing/position so bars look identical */
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    color: #2e5baa;
+}
+
+/* Make the registration-code input use the same sizing as other inputs */
+.input-wrapper.with-key input {
+    padding: 12px 14px 12px 42px; /* same as regular inputs */
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    background-color: #f5f5f5;
+    transition: all 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2e5baa;
+    background-color: white;
+}
+
+input::placeholder {
+    color: #999;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.password-toggle:hover {
+    color: #2e5baa;
+}
+
+.eye-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #2e5baa 0%, #3d6ec9 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+}
+
+.login-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 91, 170, 0.3);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.forgot-password {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.forgot-password a {
+    color: #2e5baa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.register-section {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.register-section p {
+    font-size: 14px;
+    color: #666;
+}
+
+.register-section a {
+    color: #2e5baa;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-section a:hover {
+    text-decoration: underline;
+}

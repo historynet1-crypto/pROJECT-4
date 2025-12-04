@@ -1,0 +1,119 @@
+@page
+@model SecLogWeb.Pages.DashboardModel
+@{
+    ViewData["Title"] = "HR Portal";
+}
+
+<div class="dashboard-container container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4 header-row">
+        <h2 class="portal-title">HR Portal</h2>
+        <div>
+            <a class="btn btn-outline-secondary" asp-page="/Login">Uitloggen</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <aside class="col-md-3 mb-3 sidebar">
+            <div class="list-group" id="dashboard-menu" role="tablist">
+                <button class="list-group-item list-group-item-action active" data-target="#overview">Overzicht</button>
+                <button class="list-group-item list-group-item-action" data-target="#salaris">Salarisstroken</button>
+                <button class="list-group-item list-group-item-action" data-target="#jaaropgaven">Jaaropgaven</button>
+                <button class="list-group-item list-group-item-action" data-target="#declaraties">Declaraties indienen</button>
+                <button class="list-group-item list-group-item-action" data-target="#vergoedingen">Vergoedingen & toeslagen</button>
+                <button class="list-group-item list-group-item-action" data-target="#pensioen">Pensioeninformatie</button>
+                <button class="list-group-item list-group-item-action" data-target="#persoons">Persoonsgegevens</button>
+                <button class="list-group-item list-group-item-action" data-target="#roosters">Roosters</button>
+                <button class="list-group-item list-group-item-action" data-target="#verlof">Verlof aanvragen & saldo</button>
+                <button class="list-group-item list-group-item-action" data-target="#overuren">Overuren / Tijdregistratie</button>
+                <button class="list-group-item list-group-item-action" data-target="#ziek">Ziek- & betermeldingen</button>
+            </div>
+        </aside>
+
+        <main class="col-md-9 mb-3 content-area">
+            <section id="overview" class="content-section active-section">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">Welkom</h4>
+                        <p class="card-text">Dit is uw persoonlijke HR-overzicht. Gebruik het menu links om door de verschillende onderdelen te navigeren.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="salaris" class="content-section">
+                <h4>Salarisstroken</h4>
+                <p>Hier vind je je recente salarisstroken. (Voorbeeldweergave)</p>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action">2025-11 - November 2025</a>
+                    <a class="list-group-item list-group-item-action">2025-10 - Oktober 2025</a>
+                </div>
+            </section>
+
+            <section id="jaaropgaven" class="content-section">
+                <h4>Jaaropgaven</h4>
+                <p>Download je jaaropgaven van voorgaande jaren.</p>
+                <ul>
+                    <li><a href="#">2024 - Jaaropgave (PDF)</a></li>
+                    <li><a href="#">2023 - Jaaropgave (PDF)</a></li>
+                </ul>
+            </section>
+
+            <section id="declaraties" class="content-section">
+                <h4>Declaraties indienen</h4>
+                <p>Upload bonnen en dien een declaratie in.</p>
+                <button class="btn btn-primary">Nieuwe declaratie</button>
+            </section>
+
+            <section id="vergoedingen" class="content-section">
+                <h4>Vergoedingen & toeslagen</h4>
+                <p>Overzicht van vergoedingen die voor jou gelden.</p>
+            </section>
+
+            <section id="pensioen" class="content-section">
+                <h4>Pensioeninformatie</h4>
+                <p>Informatie over je pensioenopbouw en contactgegevens van het pensioenfonds.</p>
+            </section>
+
+            <section id="persoons" class="content-section">
+                <h4>Persoonsgegevens</h4>
+                <dl class="row">
+                    <dt class="col-sm-3">Volledige naam</dt>
+                    <dd class="col-sm-9">[Voornaam Achternaam]</dd>
+
+                    <dt class="col-sm-3">Functie</dt>
+                    <dd class="col-sm-9">[Functieomschrijving]</dd>
+
+                    <dt class="col-sm-3">Telefoonnummer</dt>
+                    <dd class="col-sm-9">[06-12345678]</dd>
+
+                    <dt class="col-sm-3">Burgerservicenummer</dt>
+                    <dd class="col-sm-9">[—] <small class="text-muted">Optioneel / beveiligd</small></dd>
+                </dl>
+                <button class="btn btn-secondary">Bewerk gegevens</button>
+            </section>
+
+            <section id="roosters" class="content-section">
+                <h4>Roosters</h4>
+                <p>Bekijk je huidige rooster en komende shifts.</p>
+            </section>
+
+            <section id="verlof" class="content-section">
+                <h4>Verlof aanvragen & saldo</h4>
+                <p>Saldo: Vakantie: 12 dagen, ADV: 3 dagen</p>
+                <button class="btn btn-primary">Verlof aanvragen</button>
+            </section>
+
+            <section id="overuren" class="content-section">
+                <h4>Overuren / Tijdregistratie</h4>
+                <p>Overuren: 8 uur</p>
+            </section>
+
+            <section id="ziek" class="content-section">
+                <h4>Ziek- en betermeldingen</h4>
+                <p>Start hier het meldproces of bekijk de status van openstaande meldingen.</p>
+                <button class="btn btn-warning">Nieuwe ziekmelding</button>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
