@@ -34,7 +34,7 @@ namespace SecLogWeb.Pages
             var users = db.GetAllUsers();
 
             var email = Email.Trim();
-            var user = users.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+            var user = users.FirstOrDefault(u => u.Email == email);
             if (user != null)
             {
                 try

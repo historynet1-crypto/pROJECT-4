@@ -63,7 +63,7 @@ namespace SecLogWeb.Pages
 
             // Check if user already exists
             Db db = new Db();
-            var existing = db.GetAllUsers().FirstOrDefault(u => u.PasswordHash.ToLower() == Password.ToLower());
+            var existing = db.GetAllUsers().FirstOrDefault(u => u.PasswordHash == Password);
             if (existing != null)
             {
                 ModelState.AddModelError(string.Empty, "Er bestaat al een account met dit e-mailadres.");

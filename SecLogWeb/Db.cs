@@ -19,8 +19,7 @@ namespace SecLogWeb
         public  List<User> GetAllUsers()
         {
             var users = new List<User>();
-            const string sql = "SELECT * FROM `account`"; // change table name if different
-
+            const string sql = "SELECT * FROM `account`";
              using var conn = new MySqlConnection(_connectionString);
              conn.Open();
 
