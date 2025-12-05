@@ -63,27 +63,39 @@ namespace SecLogWeb.Pages
 
             // Check if user already exists
             Db db = new Db();
-            var existing = db.GetAllUsers().FirstOrDefault(u => u.PasswordHash == Password);
-            if (existing != null)
+            var existing = db.GetUserByEmail(email);
+            if (existing == null)
             {
-                ModelState.AddModelError(string.Empty, "Er bestaat al een account met dit e-mailadres.");
+                ModelState.AddModelError(string.Empty, "Er bestaat geen account met dit e-mailadres.");
                 return Page();
             }
-            RedirectToPage("/index");
-        
 
+            // If the account already has a password, prevent overwriting
+            if (!string.IsNullOrWhiteSpace(existing.PasswordHash))
+            {
+                ModelState.AddModelError(string.Empty, "Er is al een wachtwoord ingesteld voor dit account.");
+                return Page();
+            }
 
             Passwordmanager passwordmanager = new Passwordmanager();
             User user = new User()
             {
+                Id = existing.Id,
                 Email = email,
                 PasswordHash = passwordmanager.HashPassword(Password),
                 CreatedAt = DateTime.UtcNow
             };
-            db.AddUser(user);
+
+            var updated = db.AddUser(user);
+            if (!updated)
+            {
+                ModelState.AddModelError(string.Empty, "Wachtwoord kon niet worden bijgewerkt. Probeer het later opnieuw.");
+                return Page();
+            }
 
             // After creating the account, redirect to login
             return RedirectToPage("/Login");
+            
         }
     }
 }

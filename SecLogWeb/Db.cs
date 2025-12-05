@@ -40,6 +40,29 @@ namespace SecLogWeb
 
         }
 
+        // Read single user by email
+        public User? GetUserByEmail(string email)
+        {
+            const string sql = "SELECT * FROM `account` WHERE email = @email LIMIT 1";
+            using var conn = new MySqlConnection(_connectionString);
+            conn.Open();
+
+            using var cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@email", email);
+            using var reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                User user = new User();
+                user.Id = reader.GetInt32("id");
+                user.Email = reader.GetString("email");
+                user.PasswordHash = reader.IsDBNull(reader.GetOrdinal("wachtwoord")) ? null : reader.GetString("wachtwoord");
+                return user;
+            }
+
+            return null;
+        }
+
 
         //public GetByEmail(string user)
         //{
@@ -57,28 +80,35 @@ namespace SecLogWeb
 
         public bool AddUser(User user)
         {
-            //const string sql = "INSERT INTO `account`";
-
             using var conn = new MySqlConnection(_connectionString);
             conn.Open();
 
-            //using var cmd = new MySqlCommand(sql, conn);
-            //using var reader = cmd.ExecuteReader();
+            // If caller didn't provide an id, try to look it up by email
+            if (user.Id == 0 && !string.IsNullOrWhiteSpace(user.Email))
+            {
+                const string selectSql = "SELECT id FROM account WHERE email = @email LIMIT 1";
+                using var selCmd = new MySqlCommand(selectSql, conn);
+                selCmd.Parameters.AddWithValue("@email", user.Email);
+                var scalar = selCmd.ExecuteScalar();
+                if (scalar != null && int.TryParse(scalar.ToString(), out int id))
+                {
+                    user.Id = id;
+                }
+            }
 
+            // Require an id to perform the update
+            if (user.Id == 0)
+            {
+                return false;
+            }
 
-            //String query = "INSERT INTO dbo.SMS_PW (id,username,password,email) VALUES (@id,@username,@password, @email)";
-            String query = "INSERT INTO account (id,email,wachtwoord) VALUES (@id,@email, @wachtwoord)";
+            const string query = "UPDATE account SET wachtwoord=@wachtwoord WHERE id=@id";
+            using var cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@wachtwoord", (object?)user.PasswordHash ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("@id", user.Id);
 
-            MySqlCommand command = new MySqlCommand(query, conn);
-            command.Parameters.AddWithValue("@id", user.Id); //id /email /wachtwoord
-            command.Parameters.AddWithValue("@email", user.Email); //id /email /wachtwoord
-            command.Parameters.AddWithValue("@wachtwoord", user.PasswordHash); //id /email /wachtwoord
-
-            command.ExecuteNonQuery();
-
-
-
-            return true;
+            int rows = cmd.ExecuteNonQuery();
+            return rows > 0;
         }
 
     }
