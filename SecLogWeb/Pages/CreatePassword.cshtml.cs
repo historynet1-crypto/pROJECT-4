@@ -63,19 +63,16 @@ namespace SecLogWeb.Pages
 
             // Check if user already exists
             Db db = new Db();
-            var existing = db.GetAllUsers().FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+            var existing = db.GetAllUsers().FirstOrDefault(u => u.PasswordHash.ToLower() == Password.ToLower());
             if (existing != null)
             {
                 ModelState.AddModelError(string.Empty, "Er bestaat al een account met dit e-mailadres.");
                 return Page();
             }
+            RedirectToPage("/index");
+        
 
-            // Create salt + hash using PBKDF2
 
-
-
-            //  db.AddUser(user);
-            //db.SaveChanges();
             Passwordmanager passwordmanager = new Passwordmanager();
             User user = new User()
             {
