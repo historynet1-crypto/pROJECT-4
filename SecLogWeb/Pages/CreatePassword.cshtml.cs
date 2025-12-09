@@ -66,7 +66,7 @@ namespace SecLogWeb.Pages
             var existing = db.GetUserByEmail(email);
             if (existing == null)
             {
-                ModelState.AddModelError(string.Empty, "Er bestaat geen account met dit e-mailadres.");
+                ModelState.AddModelError(string.Empty, "Euir bestaat geen account met dit e-mailadres.");
                 return Page();
             }
 

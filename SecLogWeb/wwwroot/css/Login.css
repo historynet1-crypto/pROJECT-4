@@ -55,7 +55,7 @@ body.login-page > .container {
 }
 
 .header {
-    background: linear-gradient(135deg, #2e5baa 0%, #3d6ec9 100%);
+    background: linear-gradient(135deg, #1e40af 0%, #1e40af 100%);
     color: white;
     padding: 30px;
     text-align: center;
@@ -109,7 +109,7 @@ label {
     left: 14px;
     width: 18px;
     height: 18px;
-    color: #2e5baa;
+    color: #1e40af;
 }
 
 /* Larger key icon variant used for the registration code input */
@@ -118,7 +118,7 @@ label {
     left: 14px;
     width: 18px;
     height: 18px;
-    color: #2e5baa;
+    color: #1e40af;
 }
 
 /* Make the registration-code input use the same sizing as other inputs */
@@ -141,7 +141,7 @@ input {
 
 input:focus {
     outline: none;
-    border-color: #2e5baa;
+    border-color: #1e40af;
     background-color: white;
 }
 
@@ -162,7 +162,7 @@ input::placeholder {
 }
 
 .password-toggle:hover {
-    color: #2e5baa;
+    color: #1e40af;
 }
 
 .eye-icon {
@@ -173,7 +173,7 @@ input::placeholder {
 .login-button {
     width: 100%;
     padding: 13px;
-    background: linear-gradient(135deg, #2e5baa 0%, #3d6ec9 100%);
+    background: linear-gradient(135deg, #1e40af 0%, #1e40af 100%);
     color: white;
     border: none;
     border-radius: 6px;
@@ -186,7 +186,7 @@ input::placeholder {
 
 .login-button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(46, 91, 170, 0.3);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
 }
 
 .login-button:active {
@@ -199,7 +199,7 @@ input::placeholder {
 }
 
 .forgot-password a {
-    color: #2e5baa;
+    color: #1e40af;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -221,7 +221,7 @@ input::placeholder {
 }
 
 .register-section a {
-    color: #2e5baa;
+    color: #1e40af;
     text-decoration: none;
     font-weight: 600;
 }

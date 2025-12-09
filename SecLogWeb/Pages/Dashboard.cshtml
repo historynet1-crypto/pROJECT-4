@@ -1,118 +1,355 @@
 @page
 @model SecLogWeb.Pages.DashboardModel
 @{
-    ViewData["Title"] = "HR Portal";
+    ViewData["Title"] = "Medewerkers Dashboard";
 }
 
-<div class="dashboard-container container-fluid">
-    <div class="d-flex justify-content-between align-items-center mb-4 header-row">
-        <h2 class="portal-title">HR Portal</h2>
+<div class="top-hero">
+    <div class="hero-inner d-flex justify-content-between align-items-center">
         <div>
-            <a class="btn btn-outline-secondary" asp-page="/Login">Uitloggen</a>
+            <h1 class="hero-title">Medewerkers Dashboard</h1>
+            <div class="hero-sub">Overzicht en statistieken</div>
+        </div>
+        <div>
+            <a class="btn btn-light logout-btn" asp-page="/Login">Uitloggen</a>
         </div>
     </div>
+</div>
 
+<div class="dashboard-container container">
     <div class="row">
-        <aside class="col-md-3 mb-3 sidebar">
-            <div class="list-group" id="dashboard-menu" role="tablist">
-                <button class="list-group-item list-group-item-action active" data-target="#overview">Overzicht</button>
-                <button class="list-group-item list-group-item-action" data-target="#salaris">Salarisstroken</button>
-                <button class="list-group-item list-group-item-action" data-target="#jaaropgaven">Jaaropgaven</button>
-                <button class="list-group-item list-group-item-action" data-target="#declaraties">Declaraties indienen</button>
-                <button class="list-group-item list-group-item-action" data-target="#vergoedingen">Vergoedingen & toeslagen</button>
-                <button class="list-group-item list-group-item-action" data-target="#pensioen">Pensioeninformatie</button>
-                <button class="list-group-item list-group-item-action" data-target="#persoons">Persoonsgegevens</button>
-                <button class="list-group-item list-group-item-action" data-target="#roosters">Roosters</button>
-                <button class="list-group-item list-group-item-action" data-target="#verlof">Verlof aanvragen & saldo</button>
-                <button class="list-group-item list-group-item-action" data-target="#overuren">Overuren / Tijdregistratie</button>
-                <button class="list-group-item list-group-item-action" data-target="#ziek">Ziek- & betermeldingen</button>
+        <aside class="col-lg-3 mb-4 sidebar">
+            <div class="sidebar-card">
+                <div class="sidebar-card-header">Geplande Afspraken</div>
+                <div class="sidebar-card-body appointments">
+                    <div class="appointment">
+                        <div class="appt-date">06 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Jan van der Berg</div>
+                            <div class="appt-meta">10:00 - 11:00 · Kamer 3B</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">07 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Sophie Jansen</div>
+                            <div class="appt-meta">13:30 - 14:00 · Kamer 1A</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">08 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Mohammed Al-Hassan</div>
+                            <div class="appt-meta">09:00 - 09:30 · Kamer 2C</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">09 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Anna de Vries</div>
+                            <div class="appt-meta">11:00 - 11:30 · Kamer 4A</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">10 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Mark Peters</div>
+                            <div class="appt-meta">14:00 - 15:00 · Kamer 5B</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">11 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Eva Janssen</div>
+                            <div class="appt-meta">08:30 - 09:00 · Kamer 1C</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">12 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Kees van Dam</div>
+                            <div class="appt-meta">16:00 - 16:30 · Kamer 2A</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">13 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Laila Ahmed</div>
+                            <div class="appt-meta">09:45 - 10:15 · Kamer 3C</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">14 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Tom Bakker</div>
+                            <div class="appt-meta">12:00 - 12:30 · Kamer 4B</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment">
+                        <div class="appt-date">15 dec 2025</div>
+                        <div class="appt-main">
+                            <div class="appt-name">Nora van Leeuwen</div>
+                            <div class="appt-meta">10:00 - 10:30 · Kamer 1B</div>
+                        </div>
+                    </div>
+
+                    <div class="appointment more-link">
+                        <button type="button" class="btn btn-link" id="viewMoreAppointmentsBtn">Bekijk meer afspraken</button>
+                    </div>
+                </div>
             </div>
         </aside>
 
-        <main class="col-md-9 mb-3 content-area">
-            <section id="overview" class="content-section active-section">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h4 class="card-title">Welkom</h4>
-                        <p class="card-text">Dit is uw persoonlijke HR-overzicht. Gebruik het menu links om door de verschillende onderdelen te navigeren.</p>
+        <main class="col-lg-9 content-area">
+            <!-- Top stat boxes removed as requested -->
+
+            <div class="big-cards mb-3">
+                <div class="large-card">
+                    <div class="large-title">€ Totaal Salaris</div>
+                    <div class="large-number">€41,300</div>
+                    <div class="large-sub muted">Per maand voor alle medewerkers</div>
+                </div>
+                <div class="large-card">
+                    <div class="large-title">Gemiddeld Salaris</div>
+                    <div class="large-number">€5,163</div>
+                    <div class="large-sub muted">Per medewerker per maand</div>
+                </div>
+            </div>
+
+            <div class="more-cards">
+                <!-- Aanwezigheid Overzicht (presence overview) -->
+                <div class="panel-card mb-4">
+                    <div class="panel-header">Aanwezigheid Overzicht voor vandaag</div>
+                    <div class="panel-body">
+                        <div class="presence-row">
+                            <div class="presence-left">
+                                <span class="presence-icon present">
+                                    <!-- check mark SVG -->
+                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                        <path d="M20.285 6.709a1 1 0 0 0-1.414-1.418l-9.193 9.21-3.152-3.167A1 1 0 0 0 5.31 12.31l3.944 3.958a1 1 0 0 0 1.414 0l9.617-9.569z" fill="#24b06b"></path>
+                                    </svg>
+                                </span>
+                                <span class="presence-label">Aanwezig</span>
+                            </div>
+                            <div class="presence-center">
+                                <div class="progress-track">
+                                    <div class="progress-fill progress-green" style="width:75%"></div>
+                                </div>
+                            </div>
+                            <div class="presence-right"> 38 (76%)</div>
+                        </div>
+
+                        <div class="presence-row">
+                            <div class="presence-left">
+                                <span class="presence-icon absent">
+                                    <!-- cross SVG -->
+                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                        <path d="M18.364 5.636a1 1 0 0 0-1.414 0L12 10.586 7.05 5.636A1 1 0 1 0 5.636 7.05L10.586 12l-4.95 4.95a1 1 0 1 0 1.414 1.414L12 13.414l4.95 4.95a1 1 0 0 0 1.414-1.414L13.414 12l4.95-4.95a1 1 0 0 0 0-1.414z" fill="#e03b3b"></path>
+                                    </svg>
+                                </span>
+                                <span class="presence-label">Afwezig</span>
+                            </div>
+                            <div class="presence-center">
+                                <div class="progress-track">
+                                    <div class="progress-fill progress-red" style="width:13%"></div>
+                                </div>
+                            </div>
+                            <div class="presence-right"> 6 (12%)</div>
+                        </div>
+
+                        <div class="presence-row">
+                            <div class="presence-left">
+                                <span class="presence-icon leave">
+                                    <!-- calendar SVG with small colored header -->
+                                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                        <rect x="3" y="4" width="18" height="17" rx="2" ry="2" fill="#f3f6ff"></rect>
+                                        <rect x="3" y="4" width="18" height="5" rx="2" ry="2" fill="#2e5baa"></rect>
+                                        <rect x="6" y="2" width="2" height="4" fill="#2e5baa"></rect>
+                                        <rect x="16" y="2" width="2" height="4" fill="#2e5baa"></rect>
+                                        <circle cx="8.5" cy="11.5" r="1" fill="#fff" opacity="0.9"></circle>
+                                    </svg>
+                                </span>
+                                <span class="presence-label">Verlof</span>
+                            </div>
+                            <div class="presence-center">
+                                <div class="progress-track">
+                                    <div class="progress-fill progress-yellow" style="width:13%"></div>
+                                </div>
+                            </div>
+                            <div class="presence-right"> 6 (12%)</div>
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            <section id="salaris" class="content-section">
-                <h4>Salarisstroken</h4>
-                <p>Hier vind je je recente salarisstroken. (Voorbeeldweergave)</p>
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action">2025-11 - November 2025</a>
-                    <a class="list-group-item list-group-item-action">2025-10 - Oktober 2025</a>
+                <!-- Actieve Projecten (active projects) -->
+                <div class="panel-card mb-3">
+                    <div class="panel-header">Projecten voor deze maand</div>
+                    <div class="panel-body projects-panel">
+                        <div class="projects-stats">
+                            <div class="proj-stat">
+                                <div class="proj-number">20</div>
+                                <div class="proj-label">Totaal aantal projecten</div>
+                            </div>
+                            <div class="proj-stat">
+                                <div class="proj-number">15</div>
+                                <div class="proj-label">Medewerkers op projecten</div>
+                            </div>
+                        </div>
+
+                        <div class="projects-footer compact-footer">
+                            <div class="more-link"><a href="#" id="projectsOverviewLink">Overzicht: project/projecten per medewerker</a></div>
+                        </div>
+                    </div>
                 </div>
-            </section>
-
-            <section id="jaaropgaven" class="content-section">
-                <h4>Jaaropgaven</h4>
-                <p>Download je jaaropgaven van voorgaande jaren.</p>
-                <ul>
-                    <li><a href="#">2024 - Jaaropgave (PDF)</a></li>
-                    <li><a href="#">2023 - Jaaropgave (PDF)</a></li>
-                </ul>
-            </section>
-
-            <section id="declaraties" class="content-section">
-                <h4>Declaraties indienen</h4>
-                <p>Upload bonnen en dien een declaratie in.</p>
-                <button class="btn btn-primary">Nieuwe declaratie</button>
-            </section>
-
-            <section id="vergoedingen" class="content-section">
-                <h4>Vergoedingen & toeslagen</h4>
-                <p>Overzicht van vergoedingen die voor jou gelden.</p>
-            </section>
-
-            <section id="pensioen" class="content-section">
-                <h4>Pensioeninformatie</h4>
-                <p>Informatie over je pensioenopbouw en contactgegevens van het pensioenfonds.</p>
-            </section>
-
-            <section id="persoons" class="content-section">
-                <h4>Persoonsgegevens</h4>
-                <dl class="row">
-                    <dt class="col-sm-3">Volledige naam</dt>
-                    <dd class="col-sm-9">[Voornaam Achternaam]</dd>
-
-                    <dt class="col-sm-3">Functie</dt>
-                    <dd class="col-sm-9">[Functieomschrijving]</dd>
-
-                    <dt class="col-sm-3">Telefoonnummer</dt>
-                    <dd class="col-sm-9">[06-12345678]</dd>
-
-                    <dt class="col-sm-3">Burgerservicenummer</dt>
-                    <dd class="col-sm-9">[—] <small class="text-muted">Optioneel / beveiligd</small></dd>
-                </dl>
-                <button class="btn btn-secondary">Bewerk gegevens</button>
-            </section>
-
-            <section id="roosters" class="content-section">
-                <h4>Roosters</h4>
-                <p>Bekijk je huidige rooster en komende shifts.</p>
-            </section>
-
-            <section id="verlof" class="content-section">
-                <h4>Verlof aanvragen & saldo</h4>
-                <p>Saldo: Vakantie: 12 dagen, ADV: 3 dagen</p>
-                <button class="btn btn-primary">Verlof aanvragen</button>
-            </section>
-
-            <section id="overuren" class="content-section">
-                <h4>Overuren / Tijdregistratie</h4>
-                <p>Overuren: 8 uur</p>
-            </section>
-
-            <section id="ziek" class="content-section">
-                <h4>Ziek- en betermeldingen</h4>
-                <p>Start hier het meldproces of bekijk de status van openstaande meldingen.</p>
-                <button class="btn btn-warning">Nieuwe ziekmelding</button>
-            </section>
+            </div>
         </main>
+    </div>
+</div>
+
+<!-- Calendar modal -->
+<div class="modal fade" id="appointmentsModal" tabindex="-1" aria-labelledby="appointmentsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="appointmentsModalLabel">Geplande Afspraken — <span id="calendarMonthLabel"></span></h5>
+                <div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary me-2" id="prevMonthBtn">‹</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="nextMonthBtn">›</button>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="calendarContainer"></div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between align-items-center">
+                <div>
+                    <button type="button" class="btn btn-primary" id="newAppointmentBtn">+ Nieuwe Afspraak</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New appointment modal -->
+<div class="modal fade" id="newAppointmentModal" tabindex="-1" aria-labelledby="newAppointmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newAppointmentModalLabel">Nieuwe Afspraak</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="newAppointmentForm">
+                    <div class="mb-2">
+                        <label for="apptDate" class="form-label">Datum</label>
+                        <input type="date" class="form-control" id="apptDate" required />
+                    </div>
+                    <div class="mb-2">
+                        <label for="apptTime" class="form-label">Begintijd</label>
+                        <input type="time" class="form-control" id="apptTime" required />
+                    </div>
+                    <div class="mb-2">
+                        <label for="apptEndTime" class="form-label">Eindtijd</label>
+                        <input type="time" class="form-control" id="apptEndTime" required />
+                    </div>
+                    <div class="mb-2">
+                        <label for="apptLocation" class="form-label">Locatie</label>
+                        <select id="apptLocation" class="form-select" required></select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="apptEmployee" class="form-label">Medewerker</label>
+                        <select id="apptEmployee" class="form-select" required></select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <div></div>
+                <div>
+                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Annuleren</button>
+                    <button type="button" class="btn btn-primary" id="createAppointmentBtn">Maak afspraak</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Projects per employee modal (placed at root level to avoid nesting issues) -->
+<div class="modal fade" id="projectsModal" tabindex="-1" aria-labelledby="projectsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="projectsModalLabel">Projecten per medewerker — <span id="projectsMonthLabel"></span></h5>
+                <div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary me-2" id="prevProjectMonthBtn">‹</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="nextProjectMonthBtn">›</button>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="projectsListContainer" class="projects-list row g-3"></div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between align-items-center">
+                <div>
+                    <button type="button" class="btn btn-primary" id="newTaskBtn">+ Nieuwe taak toevoegen</button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
+                </div>
+            </div>
+        </div>
+
+                <!-- New task modal (client-side only) -->
+                <div class="modal fade" id="newTaskModal" tabindex="-1" aria-labelledby="newTaskModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="newTaskModalLabel">Nieuwe taak toewijzen</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="newTaskForm">
+                                    <div class="mb-2">
+                                        <label for="newTaskEmployee" class="form-label">Medewerker</label>
+                                        <select id="newTaskEmployee" class="form-select" required></select>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="newTaskName" class="form-label">Taaknaam</label>
+                                        <input type="text" id="newTaskName" class="form-control" required />
+                                    </div>
+                                    <!-- Status removed: tasks default to 'In behandeling' -->
+                                    <div class="mb-2">
+                                        <label for="newTaskMonth" class="form-label">Maand</label>
+                                        <input type="month" id="newTaskMonth" class="form-control" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <div></div>
+                                <div>
+                                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Annuleren</button>
+                                    <button type="button" class="btn btn-primary" id="createTaskBtn">Voeg taak toe</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </div>
 </div>
 

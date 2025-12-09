@@ -31,7 +31,7 @@ namespace SecLogWeb
                 User user = new User();
                 user.Id = reader.GetInt32("id");
                 user.Email = reader.GetString("email");
-                user.PasswordHash = reader.IsDBNull(reader.GetOrdinal("wachtwoord")) ? null : reader.GetString("wachtwoord");
+                user.PasswordHash = reader.IsDBNull(reader.GetOrdinal("wachtwoord")) ? string.Empty : reader.GetString("wachtwoord");
                 users.Add(user);
                 
             }
@@ -56,7 +56,7 @@ namespace SecLogWeb
                 User user = new User();
                 user.Id = reader.GetInt32("id");
                 user.Email = reader.GetString("email");
-                user.PasswordHash = reader.IsDBNull(reader.GetOrdinal("wachtwoord")) ? null : reader.GetString("wachtwoord");
+                user.PasswordHash = reader.IsDBNull(reader.GetOrdinal("wachtwoord")) ? string.Empty : reader.GetString("wachtwoord");
                 return user;
             }
 
@@ -112,4 +112,9 @@ namespace SecLogWeb
         }
 
     }
+
+
+
+
 }
+

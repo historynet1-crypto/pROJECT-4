@@ -1,12 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+using MySql.Data.MySqlClient;
 
 namespace SecLogWeb.Pages
 {
     public class LoginModel : PageModel
     {
-
         public LoginModel()
         {
         }
@@ -19,7 +18,6 @@ namespace SecLogWeb.Pages
 
         public void OnGet()
         {
-
         }
 
         public IActionResult OnPost()
@@ -30,8 +28,27 @@ namespace SecLogWeb.Pages
                 return Page();
             }
 
-            Db db = new Db();
-            var users = db.GetAllUsers();
+            List<Models.User> users;
+            try
+            {
+                var db = new Db();
+                users = db.GetAllUsers();
+            }
+            catch (TimeoutException)
+            {
+                ModelState.AddModelError(string.Empty, "Database timeout. Controleer of de MySQL-server bereikbaar is.");
+                return Page();
+            }
+            catch (MySqlException ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Database niet bereikbaar ({ex.Number}). Controleer de MySQL-verbinding.");
+                return Page();
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Onbekende databasefout. Probeer later opnieuw.");
+                return Page();
+            }
 
             var email = Email.Trim();
             var user = users.FirstOrDefault(u => u.Email == email);

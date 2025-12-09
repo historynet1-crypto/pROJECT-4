@@ -1,10 +1,26 @@
 /* Dashboard and general site styles (keeps visual language from Login.css) */
 
 :root{
-    --brand-start: #2e5baa;
-    --brand-end: #3d6ec9;
+    --brand-start: #1e40af;
+    --brand-end: #1e40af;
+    --brand-rgb: 30,64,175;
     --muted: #666;
 }
+
+html, body { height: 100%; }
+
+/* New hero/header */
+.top-hero{
+    background: linear-gradient(90deg,var(--brand-start), var(--brand-end));
+    color: #fff;
+    padding: 28px 0;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+}
+.hero-inner{ padding: 0 24px; max-width: 1200px; margin: 0 auto; }
+.hero-title{ font-size:28px; font-weight:700; margin:0; }
+.hero-sub{ color: rgba(255,255,255,0.9); margin-top:6px; }
+.logout-btn{ border-radius:8px; }
 
 .header-row{
     align-items:center;
@@ -18,12 +34,30 @@
 }
 
 .dashboard-container{
-    padding: 20px 24px;
-    min-height: 70vh;
+    padding: 20px 0;
+    min-height: calc(100vh - 120px);
 }
 
+/* Ensure row stretches so sidebar can be full height */
+.dashboard-container > .row { align-items: stretch; }
+
+/* Sidebar card (left column) */
+.sidebar-card{ border-radius:12px; box-shadow: 0 6px 18px rgba(35,49,74,0.06); border: 1px solid rgba(46,91,170,0.12); }
+.sidebar-header{ background: linear-gradient(90deg,var(--brand-start), var(--brand-end)); color:#fff; font-weight:600; border-top-left-radius:12px; border-top-right-radius:12px; }
+.sidebar-body{ padding: 18px; }
+.profile-entry{ padding: 12px 0; border-bottom: 1px solid #eef2fb; position:relative; }
+.profile-entry:last-child{ border-bottom:none; }
+.profile-name{ font-weight:700; color:#17335a; }
+.profile-role{ font-size:0.95rem; }
+.profile-badge{ position:absolute; right:0; top:18px; padding:6px 10px; border-radius:16px; font-size:0.8rem; }
+.badge-success{ background:#24b06b; color:#fff; }
+.badge-warning{ background:#f0b400; color:#fff; }
+
 .sidebar{
+    padding-left: 0;
     padding-right: 12px;
+    display: flex;
+    align-items: stretch;
 }
 
 .list-group-item{
@@ -43,6 +77,16 @@
     padding-left: 18px;
 }
 
+/* Stats cards grid on right */
+.stats-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:18px; }
+.stat-card{ background:#fff; border-radius:12px; padding:18px; border:2px solid rgba(46,91,170,0.12); box-shadow:none; }
+.stat-card .stat-header{ color:var(--brand-start); font-weight:600; margin-bottom:8px; }
+.stat-card .stat-number{ font-size:36px; font-weight:700; color:#16325a; }
+.big-cards{ display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:12px; }
+.large-card{ border-radius:12px; background:#fff; padding:18px; border:2px solid rgba(46,91,170,0.12); }
+.large-card .large-number{ font-size:42px; font-weight:700; color:var(--brand-start); }
+
+
 .content-section{ display: none; }
 .content-section.active-section{ display: block; }
 
@@ -61,7 +105,388 @@
 
 @media (max-width: 767px){
     .sidebar{ margin-bottom: 18px; }
+    .stats-grid{ grid-template-columns: 1fr; }
+    .big-cards{ grid-template-columns: 1fr; }
 }
 
 /* small utility */
 .muted{ color: var(--muted); }
+
+/* Full dashboard styling to match pasted design */
+.top-hero{ background: linear-gradient(90deg,var(--brand-start), var(--brand-end)); color:#fff; padding:30px 0; margin-bottom:18px; }
+.hero-inner{ padding:0 12px; }
+.hero-title{ font-size:28px; font-weight:700; margin:0; }
+.hero-sub{ opacity:0.95; margin-top:6px; }
+.logout-btn{ border-radius:10px; }
+
+/* Keep the hero visible when page scrolls */
+.top-hero{ position:sticky; top:0; z-index:1000; }
+
+.sidebar-card{ background:#fff; border-radius:12px; box-shadow: 0 8px 20px rgba(16,36,80,0.08); border:1px solid rgba(46,91,170,0.12); overflow:hidden; display:flex; flex-direction:column; height:100%; }
+.sidebar-card-header{ background: linear-gradient(90deg,var(--brand-start), var(--brand-end)); color:#fff; padding:14px 16px; font-weight:700; }
+.sidebar-card-body{ padding:14px 12px; overflow:auto; flex:1; max-height: calc(100vh - 220px); }
+.employee{ display:flex; align-items:center; justify-content:space-between; padding:12px 6px; border-bottom:1px solid #eef2fb; }
+.employee:last-child{ border-bottom:none; }
+.employee-name{ font-weight:700; color:#17335a; }
+.employee-role{ font-size:0.92rem; color:var(--muted); }
+.employee-badge{ padding:6px 10px; border-radius:14px; color:#fff; font-size:0.82rem; }
+.badge-success{ background:#24b06b; }
+.badge-warning{ background:#f0b400; }
+
+.employee-details{ margin-top:10px; }
+.detail{ color:var(--muted); font-size:0.95rem; margin:4px 0; display:flex; align-items:center; }
+.detail .icon{ display:inline-block; width:20px; color:var(--brand-start); margin-right:8px; }
+.detail .detail-text{ color:#23314a; }
+.projects{ margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; }
+.project-pill{ display:inline-block; padding:6px 10px; border-radius:18px; border:1px solid rgba(46,91,170,0.18); color:var(--brand-start); background:#fff; font-size:0.85rem; }
+
+/* Appointments in sidebar */
+.appointments .appointment{ display:flex; gap:12px; align-items:flex-start; padding:12px 6px; border-bottom:1px solid #eef2fb; }
+.appointments .appointment:last-child{ border-bottom:none; }
+.appt-date{ min-width:86px; background:linear-gradient(180deg,#f3f6ff,#eaf0ff); color:var(--brand-start); font-weight:700; padding:8px 10px; border-radius:8px; text-align:center; font-size:0.9rem; }
+
+/* Calendar table: fixed layout and consistent cell sizes */
+/* Add clearer borders and a container outline so the calendar is visible on light backgrounds */
+#calendarContainer { border: 1px solid rgba(46,91,170,0.12); border-radius: 10px; overflow: hidden; box-shadow: 0 8px 20px rgba(16,36,80,0.04); }
+#calendarContainer table { table-layout: fixed; width: 100%; border-collapse: collapse; }
+#calendarContainer thead th { text-align: center; background: rgba(35,49,74,0.04); }
+#calendarContainer th, #calendarContainer td { border: 1px solid rgba(46,91,170,0.10); padding: 6px; box-sizing: border-box; }
+
+/* Force each calendar cell to a fixed height and prevent content from resizing it */
+#calendarContainer td.calendar-cell {
+    height: 120px; /* fixed cell height */
+    max-height: 120px;
+    padding: 6px;
+    vertical-align: top;
+    /* subtle inner divider so day boxes read as distinct panels */
+    background: #fff;
+}
+
+/* Inner wrapper becomes scrollable if there are many appointments */
+.calendar-cell-inner {
+    height: 100%;
+    max-height: 100%;
+    /* Allow vertical scrolling if content overflows so multiple appointments can be scrolled */
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    white-space: normal;
+    hyphens: auto;
+}
+
+/* Make day number more visible inside each cell */
+#calendarContainer td.calendar-cell .day-number{
+    display:block;
+    font-weight:700;
+    color:#16325a;
+    margin-bottom:6px;
+}
+
+/* Ensure appointment entries wrap to multiple lines and don't force cell height */
+.calendar-cell-inner .mb-1 {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Small responsive tweak: ensure weekday header remains readable on small screens */
+@media (max-width: 576px) {
+    #calendarContainer th, #calendarContainer td { font-size: 12px; padding: 4px; }
+    #calendarContainer td.calendar-cell { height: 100px; max-height:100px; }
+}
+
+/* Style the appointments modal to match the blue brand */
+#appointmentsModal .modal-content {
+    border: 2px solid var(--brand-start);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#appointmentsModal .modal-header {
+    background: linear-gradient(90deg, var(--brand-start), var(--brand-end));
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+#appointmentsModal .modal-title { color: #fff; }
+
+#appointmentsModal .modal-body { background: #fff; }
+
+#appointmentsModal .modal-footer { border-top: none; background: transparent; }
+
+/* Make modal close button visible on blue header */
+#appointmentsModal .btn-close { filter: invert(1) grayscale(1) brightness(2); }
+
+/* Make the modal's primary button match the brand blue */
+#appointmentsModal .btn-primary {
+    background: var(--brand-start);
+    border-color: var(--brand-start);
+    color: #fff;
+}
+#appointmentsModal .btn-primary:hover,
+#appointmentsModal .btn-primary:focus {
+    background: var(--brand-end);
+    border-color: var(--brand-end);
+    color: #fff;
+}
+
+/* Prev/Next month buttons in modal header: white background, blue icons */
+/* Wider, flatter arrow buttons styled as horizontal rounded rectangles */
+#appointmentsModal #prevMonthBtn,
+#appointmentsModal #nextMonthBtn,
+#projectsModal #prevProjectMonthBtn,
+#projectsModal #nextProjectMonthBtn {
+    background: #fff;
+    color: var(--brand-start);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: none;
+    width: 64px; /* wider */
+    height: 28px; /* flatter */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    border-radius: 10px; /* rounded rectangle */
+    transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 120ms ease;
+    font-size: 18px; /* larger arrow */
+}
+
+/* Hover / focus states: fill with brand color and invert icon */
+#appointmentsModal #prevMonthBtn:hover,
+#appointmentsModal #nextMonthBtn:hover,
+#projectsModal #prevProjectMonthBtn:hover,
+#projectsModal #nextProjectMonthBtn:hover {
+    /* Hover still highlights the button */
+    background: var(--brand-start);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* Do NOT change color/background on focus or active (click) — keep white background and blue icon */
+#appointmentsModal #prevMonthBtn:active,
+#appointmentsModal #nextMonthBtn:active,
+#appointmentsModal #prevMonthBtn:focus,
+#appointmentsModal #nextMonthBtn:focus,
+#projectsModal #prevProjectMonthBtn:active,
+#projectsModal #nextProjectMonthBtn:active,
+#projectsModal #prevProjectMonthBtn:focus,
+#projectsModal #nextProjectMonthBtn:focus {
+    background: #fff;
+    color: var(--brand-start);
+    outline: none;
+}
+
+/* Ensure keyboard focus is visible for accessibility */
+#appointmentsModal #prevMonthBtn:focus-visible,
+#appointmentsModal #nextMonthBtn:focus-visible,
+#projectsModal #prevProjectMonthBtn:focus-visible,
+#projectsModal #nextProjectMonthBtn:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0,111,255,0.18);
+}
+
+/* Move buttons slightly to the right so they don't sit too close to the month label */
+#appointmentsModal #prevMonthBtn { margin-left: 12px; }
+#appointmentsModal #nextMonthBtn { margin-left: 8px; }
+#projectsModal #prevProjectMonthBtn { margin-left: 12px; }
+#projectsModal #nextProjectMonthBtn { margin-left: 8px; }
+.appt-main{ flex:1; }
+.appt-name{ font-weight:700; color:#17335a; }
+.appt-meta{ color:var(--muted); margin-top:6px; font-size:0.92rem; }
+.more-link{ padding:10px; text-align:center; }
+.more-link a{ color:var(--brand-start); font-weight:600; }
+.more-link .more-text{ color:var(--brand-start); font-weight:600; text-decoration:underline; cursor:default; }
+
+.stats-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:18px; }
+.stat-card{ background:#fff; border-radius:12px; padding:16px; border:2px solid rgba(46,91,170,0.08); }
+.stat-header{ font-weight:600; color:var(--brand-start); }
+.stat-number{ font-size:28px; font-weight:700; margin-top:6px; }
+.stat-muted{ color:var(--muted); margin-top:6px; }
+
+.big-cards{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; margin-top:0; }
+.large-card{ background:#fff; border-radius:12px; padding:20px; border:2px solid rgba(46,91,170,0.08); }
+.large-title{ color:var(--brand-start); font-weight:700; margin-bottom:8px; }
+.large-number{ font-size:40px; font-weight:700; color:#16325a; }
+.large-sub{ color:var(--muted); margin-top:6px; }
+
+/* Responsive */
+@media (max-width: 991px){
+    .stats-grid{ grid-template-columns: repeat(2,1fr); }
+    .big-cards{ grid-template-columns: 1fr; }
+}
+@media (max-width: 575px){
+    .stats-grid{ grid-template-columns: 1fr; }
+}
+
+/* Presence overview and projects panels (match pasted image) */
+.panel-card{ background:#fff; border-radius:10px; overflow:hidden; border:2px solid rgba(46,91,170,0.12); box-shadow: 0 8px 20px rgba(16,36,80,0.06); }
+.panel-header{ background: linear-gradient(90deg,var(--brand-start), var(--brand-end)); color:#fff; padding:14px 18px; font-weight:700; font-size:1.05rem; }
+.panel-body{ padding:18px; }
+
+.presence-row{ display:flex; align-items:center; gap:12px; padding:12px 6px; border-bottom:1px solid #f1f5fb; }
+.presence-row:last-child{ border-bottom:none; }
+.presence-left{ display:flex; align-items:center; gap:10px; min-width:190px; }
+.presence-icon{ font-size:18px; display:inline-flex; width:22px; text-align:center; }
+.presence-icon{ width:22px; display:inline-flex; align-items:center; justify-content:center; }
+.presence-icon svg{ width:18px; height:18px; display:block; }
+.presence-icon.present svg path{ fill:#24b06b; }
+.presence-icon.absent svg path{ fill:#e03b3b; }
+.presence-icon.leave svg rect:first-child{ fill:#ffffff00; }
+.presence-icon.leave svg rect:nth-child(2){ fill:var(--brand-start); }
+.presence-label{ font-weight:600; color:#17335a; }
+
+.presence-center{ flex:1; }
+.progress-track{ background:#eef4fb; height:14px; border-radius:20px; position:relative; overflow:hidden; }
+.progress-fill{ height:100%; border-radius:20px 0 0 20px; }
+.progress-green{ background: #24b06b; }
+.progress-red{ background: #e03b3b; }
+.progress-yellow{ background: #f0b400; }
+.presence-right{ min-width:86px; text-align:right; color:var(--brand-start); font-weight:700; }
+
+/* Projects panel specifics */
+.projects-panel .projects-stats{ display:flex; gap:18px; margin-bottom:14px; }
+.proj-stat{ flex:1; background: #eef6ff; border:1px solid rgba(46,91,170,0.08); padding:12px; border-radius:8px; }
+.proj-number{ font-size:28px; color:var(--brand-start); font-weight:700; }
+.proj-label{ color:var(--muted); margin-top:6px; }
+.projects-panel .projects-stats{ margin-bottom:8px; }
+.projects-pills{ display:flex; gap:8px; flex-wrap:wrap; }
+.project-pill{ display:inline-block; padding:8px 12px; border-radius:20px; border:1px solid rgba(46,91,170,0.12); color:var(--brand-start); background:#fff; font-size:0.9rem; }
+
+@media (max-width: 767px){
+    .presence-left{ min-width:120px; }
+    .proj-stat{ padding:12px; }
+    .proj-number{ font-size:26px; }
+}
+
+/* Footer link under projects (right aligned) */
+.projects-footer{ display:flex; justify-content:flex-end; padding-top:12px; }
+.projects-footer-link{ color:var(--brand-start); font-weight:700; text-decoration:none; border-bottom:2px solid transparent; padding-bottom:2px; }
+.projects-footer-link:hover{ border-bottom-color: rgba(46,91,170,0.18); text-decoration:none; }
+
+/* compact footer variant for projects panel so the white body appears smaller */
+.projects-footer.compact-footer{ padding-top:6px; padding-bottom:8px; }
+.projects-panel { padding-bottom: 6px; }
+
+/* Projects modal list items */
+.projects-list .project-item{ background: #fff; border: 1px solid rgba(35,49,74,0.06); border-radius:8px; padding:12px; }
+.projects-list .project-item .fw-bold{ font-size:1rem; color:#16325a; margin-bottom:6px; }
+.projects-list .project-item .small{ color:var(--muted); }
+
+@media (min-width: 768px){
+    /* ensure two columns on md+ screens */
+    .projects-list .col-md-6{ display:flex; }
+    .projects-list .col-md-6 .project-item{ width:100%; }
+}
+
+/* Projects modal header/footer styling to match appointments modal brand */
+#projectsModal .modal-content {
+    border: 2px solid var(--brand-start);
+    border-radius: 12px;
+    overflow: hidden;
+}
+#projectsModal .modal-header {
+    background: linear-gradient(90deg, var(--brand-start), var(--brand-end));
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+#projectsModal .modal-title { color: #fff; }
+#projectsModal .modal-body { background: #fff; }
+#projectsModal .modal-footer { border-top: none; background: transparent; }
+#projectsModal .btn-close { filter: invert(1) grayscale(1) brightness(2); }
+#projectsModal .btn-primary {
+    background: var(--brand-start);
+    border-color: var(--brand-start);
+    color: #fff;
+}
+#projectsModal .btn-primary:hover,
+#projectsModal .btn-primary:focus {
+    background: var(--brand-end);
+    border-color: var(--brand-end);
+    color: #fff;
+}
+
+    /* Small project badges under each employee name in the projects modal */
+    .project-badges{ margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; }
+    .project-badge{ display:inline-block; padding:6px 10px; border-radius:18px; border:1px solid rgba(46,91,170,0.12); color:var(--brand-start); background:#fff; font-size:0.85rem; }
+    .project-badge + .project-badge{ margin-left:6px; }
+    @media (max-width:767px){
+        .project-badges{ gap:6px; }
+        .project-badge{ padding:5px 8px; font-size:0.82rem; }
+    }
+
+    /* project badge internals */
+    .project-badge{ display:inline-flex; align-items:center; gap:8px; }
+    .project-badge .project-name{ font-weight:600; color:var(--brand-start); }
+    .project-status{ font-size:0.72rem; padding:3px 6px; border-radius:10px; color:#fff; }
+    .project-status.status-done{ background:#24b06b; }
+    .project-status.status-pending{ background:#f0b400; color:#17325a; }
+
+    /* ==== Brand blue overrides (#1e40af) ==== */
+    /* Primary buttons and headers */
+    .btn-primary,
+    #appointmentsModal .btn-primary,
+    #projectsModal .btn-primary {
+        background: var(--brand-start);
+        border-color: var(--brand-start);
+        color: #fff;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus,
+    #appointmentsModal .btn-primary:hover,
+    #appointmentsModal .btn-primary:focus,
+    #projectsModal .btn-primary:hover,
+    #projectsModal .btn-primary:focus {
+        background: var(--brand-end);
+        border-color: var(--brand-end);
+        color: #fff;
+    }
+
+    #appointmentsModal .modal-header,
+    #projectsModal .modal-header,
+    .sidebar-card-header,
+    .panel-header,
+    .top-hero {
+        background: linear-gradient(90deg,var(--brand-start), var(--brand-end));
+    }
+
+    /* Common card borders and shadows */
+    .sidebar-card,
+    .stat-card,
+    .large-card,
+    .panel-card,
+    .proj-stat,
+    .projects-list .project-item,
+    .project-pill,
+    .project-badge,
+    #calendarContainer,
+    #appointmentsModal .modal-content,
+    #projectsModal .modal-content {
+        border-color: rgba(var(--brand-rgb),0.12);
+        box-shadow: 0 6px 18px rgba(var(--brand-rgb),0.06);
+    }
+
+    /* Links and accent text */
+    .projects-footer-link,
+    .more-link a,
+    .portal-title,
+    .stat-header,
+    .large-title,
+    .presence-right,
+    .project-name,
+    .project-status.status-pending { color: var(--brand-start); }
+
+    /* Arrow buttons in modals */
+    #appointmentsModal #prevMonthBtn,
+    #appointmentsModal #nextMonthBtn,
+    #projectsModal #prevProjectMonthBtn,
+    #projectsModal #nextProjectMonthBtn {
+        color: var(--brand-start);
+        border-color: rgba(var(--brand-rgb),0.08);
+    }
+    #appointmentsModal #prevMonthBtn:hover,
+    #appointmentsModal #nextMonthBtn:hover,
+    #projectsModal #prevProjectMonthBtn:hover,
+    #projectsModal #nextProjectMonthBtn:hover {
+        background: var(--brand-start);
+        color: #fff;
+    }
